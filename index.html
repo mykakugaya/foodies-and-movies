@@ -5,37 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Semantic UI CSS-->
     <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+    <!--CSS stylesheet-->
+    <link rel="stylesheet" href="style.css">
 
     <title>Project 1</title>
 </head>
+
 <body>
     <!--Top header-->
-    <header class="ui sixteen column centered grid">>Header</header>
+    <header class="ui sixteen column centered grid"><h1>Header</h1></header>
 
     <!--Main content-->
     <div class="container">
         <div class="ui grid">
-            <!--Food Searchbar-->
-            <div class="five wide column" id= "foodSearch">
-                <div class="ui action input">
-                    <input type="text" placeholder="Search recipes..." id="foodInput">
-                    <div class="ui button" id="foodBtn">Go</div>
+            <div id="food">
+                <!--Food Searchbar-->
+                <div class="five wide column" id= "foodSearch">
+                    <div class="ui action input">
+                        <input type="text" placeholder="Search recipes..." id="foodInput">
+                        <button id="foodBtn">Go</button>
+                    </div>
                 </div>
+
+                <!--Food results shown here-->
+                <div class="eleven wide column" id="foodResult"></div>
             </div>
 
-            <!--Food results shown here-->
-            <div class="eleven wide column" id="foodResult"></div>
-
-            <!--Drink Searchbar-->
-            <div class="five wide column" id= "drinkSearch">
-                <div class="ui action input">
-                    <input type="text" placeholder="Search recipes..." id="drinkInput">
-                    <div class="ui button" id="drinkBtn">Go</div>
+            <div id="drink">
+                <!--Drink Searchbar-->
+                <div class="five wide column" id= "drinkSearch">
+                    <div class="ui action input">
+                        <input type="text" placeholder="Search recipes..." id="drinkInput">
+                        <button id="drinkBtn">Go</button>
+                    </div>
                 </div>
-            </div>
 
-            <!--Drink results shown here-->
-            <div class="eleven wide column" id="drinkResult"></div>
+                <!--Drink results shown here-->
+                <div class="eleven wide column" id="drinkResult"></div>
+            </div>
 
             <!--Past search history shown here-->
             <div class="sixteen wide column" id="searchHistory"></div>
@@ -47,6 +54,8 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="semantic/dist/semantic.min.js"></script>
+    <!--JS-->
+    <script src="script.js"></script>
     
 </body>
 </html>
