@@ -4,16 +4,27 @@ body {
 }
 
 .container {
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
 }
 
-header {
+#header {
+    width: 100%;
     background-color:gray;
-    padding: 5px;
+    padding: 10px;
     margin-bottom: 20px;
 }
 
-header h1 {
+#header h1 {
     text-align: center;
+}
+
+#food {
+    position: relative;
+    float: left;
+}
+
+#drink {
+    position: relative;
+    float: left;
 }
