@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color:gray;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    text-align: center;
+}
