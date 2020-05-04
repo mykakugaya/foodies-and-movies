@@ -8,7 +8,40 @@
 
     <title>Project 1</title>
 </head>
-<body>    
+<body>
+    <!--Top header-->
+    <header class="ui sixteen column centered grid">>Header</header>
+
+    <!--Main content-->
+    <div class="container">
+        <div class="ui grid">
+            <!--Food Searchbar-->
+            <div class="five wide column" id= "foodSearch">
+                <div class="ui action input">
+                    <input type="text" placeholder="Search recipes..." id="foodInput">
+                    <div class="ui button" id="foodBtn">Go</div>
+                </div>
+            </div>
+
+            <!--Food results shown here-->
+            <div class="eleven wide column" id="foodResult"></div>
+
+            <!--Drink Searchbar-->
+            <div class="five wide column" id= "drinkSearch">
+                <div class="ui action input">
+                    <input type="text" placeholder="Search recipes..." id="drinkInput">
+                    <div class="ui button" id="drinkBtn">Go</div>
+                </div>
+            </div>
+
+            <!--Drink results shown here-->
+            <div class="eleven wide column" id="drinkResult"></div>
+
+            <!--Past search history shown here-->
+            <div class="sixteen wide column" id="searchHistory"></div>
+
+        </div>
+    </div>
 
     <!-- Semantic UI JS/jQuery -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
