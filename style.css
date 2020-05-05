@@ -42,7 +42,7 @@ body {
 }
 
 .mealList {
-    padding: 0 auto;
+    align-items: center;
 }
 
 .mealItem {
