@@ -22,7 +22,7 @@ $(".dropdown-item").on("click", function() {
         console.log(queryURL);
         console.log(response);
 
-        //Results shown here
+        // Results shown here
         var results = response.meals;
         $("#foodResults").empty();
         var ul = $("<ul>").addClass("mealList list-group");
@@ -43,6 +43,25 @@ $(".dropdown-item").on("click", function() {
             
             ul.append(li);
         }
+
+        //Rows of items with 2 columns each
+        // for (i=0; i<results.length/2; i++) {
+        //     var ul = $("<ul>").addClass("mealList list-group list-group-horizontal");
+        //     for (j=0; j<2; j++) {
+        //         var li = $("<li>").addClass("mealItem list-group-item flex-fill");
+        //         //append image
+        //         var mealImg = $("<img>");
+        //         mealImg.attr("src", results[i].strMealThumb);
+        //         mealImg.attr("id", "listImage");
+        //         li.append(mealImg);
+        //         //append name
+        //         var mealName = $("<div>").addClass("mealName");
+        //         mealName.text(results[i].strMeal);
+        //         mealName.attr("id", results[i].idMeal);
+        //         li.append(mealName);
+        //     }
+        //     ul.append(li);
+        // }
 
         $("#foodResults").append(ul);
 
