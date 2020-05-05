@@ -36,9 +36,9 @@ $(".food-dropdown").on("click", function() {
             mealImg.attr("id", "listImage");
             li.append(mealImg);
             //append name
-            var mealName = $("<div>").addClass("mealName");
+            var mealName = $("<button>").addClass("mealName btn btn-light");
             mealName.text(results[i].strMeal);
-            mealName.attr("id", results[i].idMeal);
+            mealName.attr("data-name", results[i].idMeal);
             li.append(mealName);
             
             ul.append(li);
@@ -46,21 +46,20 @@ $(".food-dropdown").on("click", function() {
 
         $("#foodResults").append(ul);
 
-    })
-    
-    $(".mealItem").on("click", function() {
-        console.log("click");
-        var id = $(this).attr("id");
-        var queryURL = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + id;
-        $.ajax({
-            url: queryURL,
-            method: "GET"
-        }).then(function(response) {
-            console.log(queryURL);
-            console.log(response);
-            //modal pop-up here
+        $(".mealName").on("click", function() {
+            var id = $(this).attr("data-name");
+            var queryURL = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + id;
+            $.ajax({
+                url: queryURL,
+                method: "GET"
+            }).then(function(response) {
+                console.log(queryURL);
+                console.log(response);
+                //modal pop-up here
+            })
         })
     })
+    
 })
 
 //AJAX call by category (Drinks)
