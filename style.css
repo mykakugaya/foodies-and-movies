@@ -38,10 +38,15 @@ body {
 }
 
 #listImage {
-    width: 250px;
+    width: 100%;
+}
+
+.mealList {
+    padding: 0 auto;
 }
 
 .mealItem {
-    margin-bottom: 10px;
-    background-color: rgb(255, 255, 255);
+    margin-bottom: 20px;
+    width: 50%;
+    padding: 0 auto;
 }

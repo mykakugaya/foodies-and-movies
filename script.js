@@ -25,23 +25,27 @@ $(".food-dropdown").on("click", function() {
         //Results shown here
         var results = response.meals;
         $("#foodResults").empty();
+        var ul = $("<ul>").addClass("mealList list-group");
 
         for (i=0; i<results.length; i++) {
-            //area for food item
-            var newDiv = $("<div>").addClass("mealItem");
+            //area for food item - if clicked, popup recipe
+            var li = $("<li>").addClass("mealItem list-group-item flex-fill");
             //append image
             var mealImg = $("<img>");
             mealImg.attr("src", results[i].strMealThumb);
             mealImg.attr("id", "listImage");
-            newDiv.append(mealImg);
-            //append name - if clicked, triggers ajax call for recipe
+            li.append(mealImg);
+            //append name
             var mealName = $("<div>").addClass("mealName");
             mealName.text(results[i].strMeal);
             mealName.attr("id", results[i].idMeal);
-            newDiv.append(mealName);
+            li.append(mealName);
             
-            $("#foodResults").append(newDiv);
+            ul.append(li);
         }
+
+        $("#foodResults").append(ul);
+
     })
     
     $(".mealItem").on("click", function() {
