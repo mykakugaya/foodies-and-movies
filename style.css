@@ -15,7 +15,8 @@ body {
     margin-bottom: 20px;
 }
 
-#header h1 {
+.headerText {
+    color: white;
     text-align: center;
 }
 
