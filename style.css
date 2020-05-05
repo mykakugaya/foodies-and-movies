@@ -50,3 +50,13 @@ body {
     width: 50%;
     padding: 0 auto;
 }
+
+.drinkList {
+    padding: 0 auto;
+}
+
+.drinkItem {
+    margin-bottom: 20px;
+    width: 50%;
+    padding: 0 auto;
+}
