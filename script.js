@@ -1,10 +1,3 @@
-//search meal by name
-//https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata
-//by category, area, ingredients lists
-// https://www.themealdb.com/api/json/v1/1/list.php?c=list
-// https://www.themealdb.com/api/json/v1/1/list.php?a=list
-// https://www.themealdb.com/api/json/v1/1/list.php?i=list
-
 //AJAX call by name
 $(".foodBtn").on("click", function() {
     var name = $(".foodInput").val();
@@ -14,7 +7,7 @@ $(".foodBtn").on("click", function() {
         method: "GET"
     }).then(function(response) {
         console.log(queryURL);
-        console.log(response);
+        console.log(response); 
     })
 })
 
@@ -28,5 +21,36 @@ $(".dropdown-item").on("click", function() {
     }).then(function(response) {
         console.log(queryURL);
         console.log(response);
+
+        //id=id# for each meal name text shown
+        var results = response.meals;
+        for (i=0; i<results.length; i++) {
+            //area for food item
+            var newDiv = $("<div>");
+            //append image
+            var mealImg = $("<img>");
+            mealImg.attr("src", results[i].strMealThumb);
+            newDiv.append(mealImg);
+            //append name
+            var mealName = $("<div>").addClass("mealName");
+            mealName.text(results[i].strMeal);
+            mealName.attr("id", results[i].idMeal);
+
+            $("#foodResults").append(newDiv);
+        }
     })
 })
+
+$("#mealName").on("click", function() {
+    var id = $(this).attr("id");
+    var queryURL = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + id;
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function(response) {
+        console.log(queryURL);
+        console.log(response);
+        //modal pop-up here
+    })
+})
+
