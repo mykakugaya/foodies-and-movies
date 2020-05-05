@@ -19,13 +19,13 @@
     <ul class="nav justify-content-center">
         <br>
         <li class="nav-item">
-          <a class="nav-link" href="#">Food Recipes</a>
+          <a class="nav-link" href="#foodResults">Food Recipes</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Drink Recipes</a>
+          <a class="nav-link" href="#drinkResults">Drink Recipes</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Saved Recipes</a>
+          <a class="nav-link" href="#savedResults">Saved Recipes</a>
         </li>
       </ul>
 
@@ -69,8 +69,8 @@
 
             <!-- Food results -->
             <div class="card col-md-9 cardMargin">
-                <div class="card-body" id="foodResults">
-                    <h5 class="card-title">Food Recipe</h5>
+                <div class="card-body">
+                    <h5 class="card-title" id="foodResults">Food Recipes</h5>
                 </div>
               </div>
         </div>
@@ -102,9 +102,9 @@
             </div>
 
             <!-- Drink results -->
-            <div class="card col-md-9 cardMargin" id="drinkResults">
+            <div class="card col-md-9 cardMargin">
                 <div class="card-body">
-                    <h5 class="card-title">Drink Recipe</h5>
+                    <h5 class="card-title" id="drinkResults">Drink Recipes</h5>
                 </div>
             </div>
         </div>
@@ -112,7 +112,7 @@
         <!-- Saved Recipes -->
         <div class="row">
             <div class="card col-md-12 cardMargin">
-                <div class="card-body savedRecipes">
+                <div class="card-body savedRecipes" id="savedResults">
                     <h5 class="card-title">Saved Food Recipes</h5>
                     <p>Saved Food Recipe info here!</p>
                     <hr></hr>
@@ -161,7 +161,6 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Understood</button>
           </div>
         </div>
       </div>
