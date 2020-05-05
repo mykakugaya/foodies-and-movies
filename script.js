@@ -26,31 +26,35 @@ $(".dropdown-item").on("click", function() {
         var results = response.meals;
         for (i=0; i<results.length; i++) {
             //area for food item
-            var newDiv = $("<div>");
+            var newDiv = $("<div>").addClass("mealItem");
             //append image
             var mealImg = $("<img>");
             mealImg.attr("src", results[i].strMealThumb);
+            mealImg.attr("id", "listImage");
             newDiv.append(mealImg);
-            //append name
+            //append name - if clicked, triggers ajax call for recipe
             var mealName = $("<div>").addClass("mealName");
             mealName.text(results[i].strMeal);
             mealName.attr("id", results[i].idMeal);
-
+            newDiv.append(mealName);
             $("#foodResults").append(newDiv);
         }
     })
-})
-
-$("#mealName").on("click", function() {
-    var id = $(this).attr("id");
-    var queryURL = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + id;
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then(function(response) {
-        console.log(queryURL);
-        console.log(response);
-        //modal pop-up here
+    
+    $(".listImage").on("click", function() {
+        console.log("click");
+        var id = $(this).attr("id");
+        var queryURL = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + id;
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function(response) {
+            console.log(queryURL);
+            console.log(response);
+            //modal pop-up here
+        })
     })
 })
+
+
 

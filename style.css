@@ -36,3 +36,11 @@ body {
 .savedRecipes {
     text-align: center;
 }
+
+#listImage {
+    width: 250px;
+}
+
+.mealItem {
+    margin-bottom: 10px;
+}
