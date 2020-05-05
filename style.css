@@ -1,6 +1,7 @@
 body {
     margin: 0;
     padding: 0;
+        /* background-color: rgb(1, 41, 22); */
 }
 
 .container {
@@ -19,6 +20,7 @@ body {
     color: white;
     text-align: center;
     background-color: gray;
+        /* background-color: rgb(97, 182, 72); */
 }
 
 .cardMargin {
@@ -59,4 +61,32 @@ body {
     margin-bottom: 20px;
     width: 50%;
     padding: 0 auto;
+}
+.search-bg {
+    /* background-color: rgb(97, 182, 72); */
+}
+
+.top-links {
+    /* color: rgb(243, 211, 107); */
+}
+
+.card-title {
+    /* color: rgb(243, 211, 107); */
+}
+
+* {
+        /* yellow */
+    /* background-color: rgb(243, 211, 107); */
+
+        /* dark blue */
+    /* background-color: rgb(2, 21, 58); */ 
+
+        /* dark green */
+    /* background-color: rgb(1, 41, 22); */
+
+        /* light green */
+    /* background-color: rgb(97, 182, 72); */
+
+        /* red */
+    /* background-color: rgb(230, 25, 25); */
 }
