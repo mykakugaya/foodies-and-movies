@@ -12,37 +12,27 @@
 </head>
 
 <body>
-    <!--NavBar-->
-    <nav class="navbar navbar-expand-lg navbar-light" id="header">
-        <!--Header-->
-        <h1 class="headerText">Header</h1>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-            
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav">
-                    
-                <li class="nav-item">
-                    <a class="nav-link" href="#foodSearch">Food Recipes</a>
-                </li>
-                    
-                <li class="nav-item">
-                    <a class="nav-link" href="#drinkSearch">Drink Recipes</a>
-                </li>
-                    
-                <li class="nav-item">
-                    <a class="nav-link" href="#saved">Saved Recipes</a>
-                </li>
-            </ul>
-        </div>
-    </nav> 
+    <!-- Header -->
+    <h1 class="headerText">Header</h1>
+    <!-- Nav Bar -->
+    <ul class="nav justify-content-center">
+        <br>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Food Recipes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Drink Recipes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Saved Recipes</a>
+        </li>
+      </ul>
 
     <div class="container">
         <div class="row">
             <!-- Food sidebar -->
-            <div class="card col-md-3">
+            <div class="card col-md-3 cardMargin sidebar">
                 <div class="card-body">
                   <h5 class="card-title">Food Search</h5>
                   <h6 class="card-subtitle mb-2 text-muted">Search for food recipes</h6>
@@ -50,14 +40,14 @@
                   <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Recipe Search" aria-label="Recipe Search" aria-describedby="button-addon2">
                     <div class="input-group-append">
-                      <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+                      <button class="btn btn-outline-secondary btnBG" type="button" id="button-addon2">Search</button>
                     </div>
                   </div>
                 </div>
             </div>
 
             <!-- Food results -->
-            <div class="card col-md-9">
+            <div class="card col-md-9 cardMargin">
                 <div class="card-body">
                     <h5 class="card-title">Food Recipe</h5>
                     <p>Food Recipe info here!</p>
@@ -67,7 +57,7 @@
 
         <div class="row">
             <!-- Drink sidebar -->
-            <div class="card col-md-3">
+            <div class="card col-md-3 cardMargin sidebar">
                 <div class="card-body">
                   <h5 class="card-title">Drink Search</h5>
                   <h6 class="card-subtitle mb-2 text-muted">Search for drink recipes</h6>
@@ -75,14 +65,14 @@
                   <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Recipe Search" aria-label="Recipe Search" aria-describedby="button-addon2">
                     <div class="input-group-append">
-                      <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+                      <button class="btn btn-outline-secondary btnBG" type="button" id="button-addon2">Search</button>
                     </div>
                   </div>
                 </div>
             </div>
 
             <!-- Drink results -->
-            <div class="card col-md-9">
+            <div class="card col-md-9 cardMargin">
                 <div class="card-body">
                     <h5 class="card-title">Drink Recipe</h5>
                     <p>Drink Recipe info here!</p>
@@ -92,10 +82,13 @@
 
         <!-- Saved Recipes -->
         <div class="row">
-            <div class="card col-md-12">
-                <div class="card-body">
-                    <h5 class="card-title">Saved Recipes</h5>
-                    <p>Saved Recipe info here!</p>
+            <div class="card col-md-12 cardMargin">
+                <div class="card-body savedRecipes">
+                    <h5 class="card-title">Saved Food Recipes</h5>
+                    <p>Saved Food Recipe info here!</p>
+                    <hr></hr>
+                    <h5 class="card-title">Saved Drink Recipes</h5>
+                    <p>Saved Drink Recipe info here!</p>
                 </div>
             </div>
         </div>
