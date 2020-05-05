@@ -38,10 +38,25 @@ body {
 }
 
 #listImage {
-    width: 250px;
+    width: 100%;
+}
+
+.mealList {
+    align-items: center;
 }
 
 .mealItem {
-    margin-bottom: 10px;
-    background-color: rgb(255, 255, 255);
+    margin-bottom: 20px;
+    width: 50%;
+    padding: 0 auto;
+}
+
+.drinkList {
+    padding: 0 auto;
+}
+
+.drinkItem {
+    margin-bottom: 20px;
+    width: 50%;
+    padding: 0 auto;
 }
