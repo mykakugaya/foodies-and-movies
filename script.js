@@ -22,7 +22,7 @@ $(".food-dropdown").on("click", function() {
         console.log(queryURL);
         console.log(response);
 
-        // Results shown here
+        //Results shown here
         var results = response.meals;
         $("#foodResults").empty();
         var ul = $("<ul>").addClass("mealList list-group");
@@ -39,42 +39,81 @@ $(".food-dropdown").on("click", function() {
             var mealName = $("<button>").addClass("mealName btn btn-light");
             mealName.text(results[i].strMeal);
             mealName.attr("data-name", results[i].idMeal);
+            mealName.attr("data-toggle", "modal");
+            mealName.attr("data-target", "#staticBackdrop");
             li.append(mealName);
             
             ul.append(li);
         }
 
-        //Rows of items with 2 columns each
-        // for (i=0; i<results.length/2; i++) {
-        //     var ul = $("<ul>").addClass("mealList list-group list-group-horizontal");
-        //     for (j=0; j<2; j++) {
-        //         var li = $("<li>").addClass("mealItem list-group-item flex-fill");
-        //         //append image
-        //         var mealImg = $("<img>");
-        //         mealImg.attr("src", results[i].strMealThumb);
-        //         mealImg.attr("id", "listImage");
-        //         li.append(mealImg);
-        //         //append name
-        //         var mealName = $("<div>").addClass("mealName");
-        //         mealName.text(results[i].strMeal);
-        //         mealName.attr("id", results[i].idMeal);
-        //         li.append(mealName);
-        //     }
-        //     ul.append(li);
-        // }
-
         $("#foodResults").append(ul);
 
         $(".mealName").on("click", function() {
             var id = $(this).attr("data-name");
-            var queryURL = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + id;
+            var mealURL = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + id;
             $.ajax({
-                url: queryURL,
+                url: mealURL,
                 method: "GET"
             }).then(function(response) {
                 console.log(queryURL);
                 console.log(response);
-                //modal pop-up here
+                
+                var dishName = response.meals[0].strMeal;
+                $(".modal-title").text(dishName);
+
+                var dishImg = $("<img>");
+                var imgURL = response.meals[0].strMealThumb;
+                dishImg.attr("src", imgURL);
+                dishImg.attr("width", "100px");
+                $("#dishImgDiv").append(dishImg);
+
+                var ingredientListEl = $("<ul>").addClass("listEl");
+                // ingredient list
+                var ingredient1 = $("<li>");
+                ingredient1.text(response.meals[0].strIngredient1);
+                ingredientListEl.append(ingredient1);
+
+                var ingredient2 = $("<li>");
+                ingredient2.text(response.meals[0].strIngredient2);
+                ingredientListEl.append(ingredient2);
+
+                var ingredient3 = $("<li>");
+                ingredient3.text(response.meals[0].strIngredient3);
+                ingredientListEl.append(ingredient3);
+
+                var ingredient4 = $("<li>");
+                ingredient4.text(response.meals[0].strIngredient4);
+                ingredientListEl.append(ingredient4);
+
+                var ingredient5 = $("<li>");
+                ingredient5.text(response.meals[0].strIngredient5);
+                ingredientListEl.append(ingredient5);
+
+                var ingredient6 = $("<li>");
+                ingredient6.text(response.meals[0].strIngredient6);
+                ingredientListEl.append(ingredient6);
+
+                var ingredient7 = $("<li>");
+                ingredient7.text(response.meals[0].strIngredient7);
+                ingredientListEl.append(ingredient7);
+
+                var ingredient8 = $("<li>");
+                ingredient8.text(response.meals[0].strIngredient8);
+                ingredientListEl.append(ingredient8);
+
+                var ingredient9 = $("<li>");
+                ingredient9.text(response.meals[0].strIngredient9);
+                ingredientListEl.append(ingredient9);
+
+                var ingredient10 = $("<li>");
+                ingredient10.text(response.meals[0].strIngredient10);
+                ingredientListEl.append(ingredient10);
+
+                $("#ingredientsList").append(ingredientListEl);
+
+                var dishInstructions = response.meals[0].strInstructions;
+                $("#instructions").text(dishInstructions);
+
             })
         })
     })
