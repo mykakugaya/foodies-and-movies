@@ -13,18 +13,20 @@ $(".foodBtn").on("click", function() {
         url: queryURL,
         method: "GET"
     }).then(function(response) {
+        console.log(queryURL);
         console.log(response);
     })
 })
 
 //AJAX call by category
 $(".dropdown-item").on("click", function() {
-    var category = $(this).val();
+    var category = $(this).attr("data-name");
     var queryURL = "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + category;
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function(response) {
+        console.log(queryURL);
         console.log(response);
     })
 })
