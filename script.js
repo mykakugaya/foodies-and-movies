@@ -24,8 +24,9 @@ $(".dropdown-item").on("click", function() {
 
         //Results shown here
         var results = response.meals;
+        $("#foodResults").empty();
+
         for (i=0; i<results.length; i++) {
-            $("#foodResults").empty();
             //area for food item
             var newDiv = $("<div>").addClass("mealItem");
             //append image
