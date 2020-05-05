@@ -18,14 +18,21 @@ body {
 .headerText {
     color: white;
     text-align: center;
+    background-color: gray;
 }
 
-#food {
-    position: relative;
-    float: left;
+.cardMargin {
+    margin-top: 20px;
 }
 
-#drink {
-    position: relative;
-    float: left;
+.sidebar {
+    background-color: lightgray;
+}
+
+.btnBG {
+    background-color: white;
+}
+
+.savedRecipes {
+    text-align: center;
 }
