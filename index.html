@@ -37,12 +37,13 @@
                     <h5 class="card-title">Food Search</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Search for food recipes</h6>
                     <!-- Food Input -->
-                    <div class="input-group mb-3">
+                    <!-- <div class="input-group mb-3">
                         <input type="text" class="foodInput form-control" placeholder="Recipe Search" aria-label="Recipe Search" aria-describedby="button-addon2">
                         <div class="input-group-append">
                             <button class="foodBtn btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
                         </div>
-                    </div>
+                    </div> -->
+                    <!-- DropDown -->
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Search by Category
@@ -112,6 +113,50 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Button trigger modal DELET THIS LATER -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+      DELETE THIS LATER
+    </button>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Recipe Title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!-- Recipe Img -->
+            <img src="https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg" width="100px">
+            <br>(img is placeholder for now)
+
+            <ul id="ingredientsList">
+                <li>
+                  sample ingrient
+                </li>
+                <li>
+                  sample ingredient
+                </li>
+                <li>
+                  sample ingredient
+                </li>
+            </ul>
+
+            <p id="instructions">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum quas ad eaque. Incidunt, cum, alias fugiat, esse similique blanditiis magni eaque itaque obcaecati molestiae sint dolor deserunt impedit vero. Distinctio iste iure modi quibusdam reiciendis eaque officiis saepe magnam aliquid voluptatibus inventore fuga laboriosam iusto, quia voluptates, amet tempora quisquam.</p>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Understood</button>
+          </div>
+        </div>
+      </div>
     </div>
 
 
