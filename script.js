@@ -11,8 +11,8 @@ $(".foodBtn").on("click", function() {
     })
 })
 
-//AJAX call by category
-$(".dropdown-item").on("click", function() {
+//AJAX call by category (Food)
+$(".food-dropdown").on("click", function() {
     var category = $(this).attr("data-name");
     var queryURL = "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + category;
     $.ajax({
@@ -59,5 +59,36 @@ $(".dropdown-item").on("click", function() {
     })
 })
 
+//AJAX call by category (Drinks)
+$(".drink-dropdown").on("click", function() {
+    var category = $(this).attr("data-name");
+    var queryURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=" + category;
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function(response) {
+        console.log(queryURL);
+        console.log(response);
 
+        //Results shown here
+        var results = response.drinks;
+        $("#drinkResults").empty();
 
+        for (i=0; i<results.length; i++) {
+            //area for food item
+            var newDiv = $("<div>").addClass("drinkItem");
+            //append image
+            var drinkImg = $("<img>");
+            drinkImg.attr("src", results[i].strDrinkThumb);
+            drinkImg.attr("id", "listImage");
+            newDiv.append(drinkImg);
+            //append name - if clicked, triggers ajax call for recipe
+            var drinkName = $("<div>").addClass("drinkName");
+            drinkName.text(results[i].strDrink);
+            drinkName.attr("id", results[i].idDrink);
+            newDiv.append(drinkName);
+            
+            $("#drinkResults").append(newDiv);
+        }
+    })
+})
