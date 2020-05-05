@@ -22,7 +22,7 @@ $(".dropdown-item").on("click", function() {
         console.log(queryURL);
         console.log(response);
 
-        //id=id# for each meal name text shown
+        //Results shown here
         var results = response.meals;
         for (i=0; i<results.length; i++) {
             //area for food item
@@ -37,11 +37,12 @@ $(".dropdown-item").on("click", function() {
             mealName.text(results[i].strMeal);
             mealName.attr("id", results[i].idMeal);
             newDiv.append(mealName);
+            
             $("#foodResults").append(newDiv);
         }
     })
     
-    $(".listImage").on("click", function() {
+    $(".mealItem").on("click", function() {
         console.log("click");
         var id = $(this).attr("id");
         var queryURL = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + id;
