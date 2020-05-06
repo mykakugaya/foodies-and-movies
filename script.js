@@ -226,12 +226,12 @@ $(".drink-dropdown").on("click", function() {
             var drinkName = response.drinks[0].strDrink;
             $(".modal-title").text(drinkName);
 
-            $("#drinkImgDiv").empty();
+            $("#dishImgDiv").empty();
             var drinkImg = $("<img>");
             var imgURL = response.drinks[0].strDrinkThumb;
             drinkImg.attr("src", imgURL);
             drinkImg.attr("width", "100px");
-            $("#drinkImgDiv").append(drinkImg);
+            $("#dishImgDiv").append(drinkImg);
 
             $("#ingredientsList").empty();
             var ingredientListEl = $("<ul>").addClass("listEl");
@@ -239,8 +239,8 @@ $(".drink-dropdown").on("click", function() {
 
             var ingredient = [];
 
-            for (var i = 1; i < 20; i++) {
-                if (response.drinks[0]["strIngredient" +i] === "") {
+            for (var i = 1; i < 15; i++) {
+                if (response.drinks[0]["strIngredient" +i] === null) {
                     console.log(i)
                 } else {
                     ingredient[i] = $("<li>");
