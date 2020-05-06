@@ -13,17 +13,17 @@ function showSavedFoodSearches() {
 }
 
 //AJAX call by name
-$(".foodBtn").on("click", function() {
-    var name = $(".foodInput").val();
-    var queryURL = "https://www.themealdb.com/api/json/v1/1/search.php?s=" + name;
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then(function(response) {
-        console.log(queryURL);
-        console.log(response); 
-    })
-})
+// $(".foodBtn").on("click", function() {
+//     var name = $(".foodInput").val();
+//     var queryURL = "https://www.themealdb.com/api/json/v1/1/search.php?s=" + name;
+//     $.ajax({
+//         url: queryURL,
+//         method: "GET"
+//     }).then(function(response) {
+//         console.log(queryURL);
+//         console.log(response); 
+//     })
+// })
 
 //AJAX call by category (Food)
 $(".food-dropdown").on("click", function() {
@@ -165,11 +165,11 @@ $(".drink-dropdown").on("click", function() {
         for (i=0; i<results.length; i++) {
             //area for drink item - if clicked, popup recipe
             var li = $("<li>").addClass("drinkItem list-group-item flex-fill");
-            //append image
+            //append image: id=id#, data-name=meal name
             var wrapper = $("<div>").addClass("container imgWrap");
-            wrapper.html(`<img src=${results[i].strDrinkThumb} id="listImage"/><button class="btn saveBtnFood" id="btn" data-state="unsaved">Save</button>`);
+            wrapper.html(`<img src=${results[i].strDrinkThumb} id="listImage"/><button class="btn saveBtnFood" id=${results[i].idDrink} data-name="${results[i].strDrink}" data-state="unsaved">Save</button>`);
             li.append(wrapper);
-            //append name - if clicked, triggers ajax call for recipe
+            //append name
             var drinkName = $("<button>").addClass("drinkName btn btn-light");
             drinkName.text(results[i].strDrink);
             drinkName.attr("data-name", results[i].idDrink);
@@ -199,7 +199,55 @@ $(".drink-dropdown").on("click", function() {
 
             //append to saved recipes and save to local storage
         })
+
+
+    // click name to see drink recipe
+    $(".drinkName").on("click", function() {
+        var id = $(this).attr("data-name");
+        var drinkURL = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + id;
+        $.ajax({
+            url: drinkURL,
+            method: "GET"
+        }).then(function(response) {
+            console.log(queryURL);
+            console.log(response);
+            
+            var drinkName = response.drinks[0].strDrink;
+            $(".modal-title").text(drinkName);
+
+            $("#drinkImgDiv").empty();
+            var drinkImg = $("<img>");
+            var imgURL = response.drinks[0].strDrinkThumb;
+            drinkImg.attr("src", imgURL);
+            drinkImg.attr("width", "100px");
+            $("#drinkImgDiv").append(drinkImg);
+
+            $("#ingredientsList").empty();
+            var ingredientListEl = $("<ul>").addClass("listEl");
+            // ingredient list
+
+            var ingredient = [];
+
+            for (var i = 1; i < 20; i++) {
+                if (response.drinks[0]["strIngredient" +i] === "") {
+                    console.log(i)
+                } else {
+                    ingredient[i] = $("<li>");
+                    ingredient[i].text(response.drinks[0]["strIngredient" +i]);
+                    ingredientListEl.append(ingredient[i]);
+                    }
+                }
+            
+            $("#ingredientsList").append(ingredientListEl);
+
+            $("#instructions").empty();
+            var drinkInstructions = response.drinks[0].strInstructions;
+            $("#instructions").text(drinkInstructions);
+
+        })
     })
+
+        })
 })
 
 // Clear Results Button
@@ -214,5 +262,3 @@ function clearDrink () {
 $("#clear-food-btn").on("click", clearFood);
 
 $("#clear-drink-btn").on("click", clearDrink);
-
-
