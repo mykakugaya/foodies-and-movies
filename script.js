@@ -1,3 +1,15 @@
+var savedSearches = localStorage.getItem("savedSearches") ? JSON.parse(localStorage.getItem("savedSearches")) : [];
+
+//Show saved searches
+function showSavedSearches() {
+    for (i=0; i<savedSearches.length; i++) {
+        var savedItem = $("<button>").text(savedSearches[i].name);
+        savedItem.attr("data-name", savedSearches[i].id);
+        savedItem.attr("id", savedSearches[i].name);
+        $("#savedResults").prepend(savedItem);
+    }
+}
+
 //AJAX call by name
 $(".foodBtn").on("click", function() {
     var name = $(".foodInput").val();
@@ -30,9 +42,9 @@ $(".food-dropdown").on("click", function() {
         for (i=0; i<results.length; i++) {
             //area for food item - if clicked, popup recipe
             var li = $("<li>").addClass("mealItem list-group-item flex-fill");
-            //append image
+            //append image: id=id#, data-name=meal name
             var wrapper = $("<div>").addClass("container imgWrap");
-            wrapper.html(`<img src=${results[i].strMealThumb} id="listImage"/><button class="btn saveBtnFood" id="btn" data-state="unsaved">Save</button>`);
+            wrapper.html(`<img src=${results[i].strMealThumb} id="listImage"/><button class="btn saveBtnFood" id=${results[i].idMeal} data-name="${results[i].strMeal}" data-state="unsaved">Save</button>`);
             li.append(wrapper);
             //append name
             var mealName = $("<button>").addClass("mealName btn btn-light");
@@ -49,20 +61,33 @@ $(".food-dropdown").on("click", function() {
 
         //Click save button to save/unsave recipe
         $(".saveBtnFood").on("click", function() {
-            var selected = $(this).attr("id");
-
+            //Object with id# and meal name
+            var selected = {id: $(this).attr("id"), name: $(this).attr("data-name")};
+            
+            //Saving a recipe
             if ($(this).attr("data-state") === "unsaved") {
                 $(this).text("Saved!");
                 $(this).attr("data-state", "saved");
                 $(this).addClass("clickedBtn");
+
+                //Add item to savedSearches and update local storage
+                savedSearches.push(selected);
+                localStorage.setItem("savedSearches", JSON.stringify(savedSearches));
             }
+            //Unsaving a recipe
             else{
                 $(this).text("Save");
                 $(this).attr("data-state", "unsaved");
                 $(this).removeClass("clickedBtn");
+                //Remove item from savedSearches and update local storage
+                for (i=0; i<savedSearches.length; i++) {
+                    if (savedSearches[i] === selected) {
+                        savedSearches.remove(selected);
+                        localStorage.setItem("savedSearches", JSON.stringify(savedSearches));
+                    }
+                }
             }
-
-            //append to saved recipes and save to local storage
+            showSavedSearches();
         })
 
         //Click name to see recipe
