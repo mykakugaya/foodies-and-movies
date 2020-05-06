@@ -31,10 +31,9 @@ $(".food-dropdown").on("click", function() {
             //area for food item - if clicked, popup recipe
             var li = $("<li>").addClass("mealItem list-group-item flex-fill");
             //append image
-            var mealImg = $("<img>");
-            mealImg.attr("src", results[i].strMealThumb);
-            mealImg.attr("id", "listImage");
-            li.append(mealImg);
+            var wrapper = $("<div>").addClass("container imgWrap");
+            wrapper.html(`<img src=${results[i].strMealThumb} id="listImage"/><button class="btn saveBtnFood" id="btn" data-state="unsaved">Save</button>`);
+            li.append(wrapper);
             //append name
             var mealName = $("<button>").addClass("mealName btn btn-light");
             mealName.text(results[i].strMeal);
@@ -48,6 +47,25 @@ $(".food-dropdown").on("click", function() {
 
         $("#foodResults").append(ul);
 
+        //Click save button to save/unsave recipe
+        $(".saveBtnFood").on("click", function() {
+            var selected = $(this).attr("id");
+
+            if ($(this).attr("data-state") === "unsaved") {
+                $(this).text("Saved!");
+                $(this).attr("data-state", "saved");
+                $(this).addClass("clickedBtn");
+            }
+            else{
+                $(this).text("Save");
+                $(this).attr("data-state", "unsaved");
+                $(this).removeClass("clickedBtn");
+            }
+
+            //append to saved recipes and save to local storage
+        })
+
+        //Click name to see recipe
         $(".mealName").on("click", function() {
             var id = $(this).attr("data-name");
             var mealURL = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + id;
