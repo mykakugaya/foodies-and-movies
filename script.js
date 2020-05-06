@@ -74,7 +74,7 @@ $(".food-dropdown").on("click", function() {
 
                 //Add item to savedSearches and update local storage
                 if (savedSearches.includes(selected)) {
-                    break;
+                    savedSearches = savedSearches;
                 }
                 else{
                     savedSearches.push(selected);
