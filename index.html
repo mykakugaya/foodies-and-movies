@@ -14,7 +14,15 @@
 <body>
 
     <!-- Header -->
-    <header><h1 class="headerText">Header</h1></header>
+    <header><h1 class="headerText">Header</h1>
+      <nav aria-label="breadcrumb" id="navbar">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#foodResults">Food Recipes</a></li>
+          <li class="breadcrumb-item"><a href="#drinkResults">Drink Recipes</a></li>
+          <li class="breadcrumb-item"><a href="#drinkResults">Saved Recipes</a></li>
+        </ol>
+      </nav>
+    </header>
     <!-- Nav Bar -->
     <!-- <ul class="nav justify-content-center">
       <br>
@@ -28,15 +36,15 @@
         <a class="nav-link" href="#savedResults">Saved Recipes</a>
       </li>
     </ul> -->
-    <nav aria-label="breadcrumb">
+    <!-- <nav aria-label="breadcrumb" id="navbar">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#foodResults">Food Recipes</a></li>
         <li class="breadcrumb-item"><a href="#drinkResults">Drink Recipes</a></li>
         <li class="breadcrumb-item"><a href="#drinkResults">Saved Recipes</a></li>
       </ol>
-    </nav>
+    </nav> -->
 
-    <div class="container">
+    <div class="container" id="main">
         <div class="row">
             <!-- Food sidebar -->
             <div class="card col-md-3 cardMargin sidebar search-bg">
@@ -126,8 +134,7 @@
         <div class="row">
             <div class="card col-md-12 cardMargin">
                 <div class="card-body" id="savedFoodResults">
-                    <h5 class="card-title">Saved Food Recipes</h5>
-                    <p>Saved Food Recipe info here!</p>
+                  <h5 class="card-title">Saved Food Recipes</h5>
                 </div>
             </div>
         </div>
@@ -135,8 +142,7 @@
         <div class="row">
           <div class="card col-md-12 cardMargin">
               <div class="card-body" id="savedDrinkResults">
-                  <h5 class="card-title">Saved Drink Recipes</h5>
-                  <p>Saved Drink Recipe info here!</p>
+                <h5 class="card-title">Saved Drink Recipes</h5>
               </div>
           </div>
       </div>
