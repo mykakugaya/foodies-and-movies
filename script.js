@@ -121,46 +121,19 @@ $(".food-dropdown").on("click", function() {
                 $("#ingredientsList").empty();
                 var ingredientListEl = $("<ul>").addClass("listEl");
                 // ingredient list
-                var ingredient1 = $("<li>");
-                ingredient1.text(response.meals[0].strIngredient1);
-                ingredientListEl.append(ingredient1);
 
-                var ingredient2 = $("<li>");
-                ingredient2.text(response.meals[0].strIngredient2);
-                ingredientListEl.append(ingredient2);
+                var ingredient = [];
 
-                var ingredient3 = $("<li>");
-                ingredient3.text(response.meals[0].strIngredient3);
-                ingredientListEl.append(ingredient3);
-
-                var ingredient4 = $("<li>");
-                ingredient4.text(response.meals[0].strIngredient4);
-                ingredientListEl.append(ingredient4);
-
-                var ingredient5 = $("<li>");
-                ingredient5.text(response.meals[0].strIngredient5);
-                ingredientListEl.append(ingredient5);
-
-                var ingredient6 = $("<li>");
-                ingredient6.text(response.meals[0].strIngredient6);
-                ingredientListEl.append(ingredient6);
-
-                var ingredient7 = $("<li>");
-                ingredient7.text(response.meals[0].strIngredient7);
-                ingredientListEl.append(ingredient7);
-
-                var ingredient8 = $("<li>");
-                ingredient8.text(response.meals[0].strIngredient8);
-                ingredientListEl.append(ingredient8);
-
-                var ingredient9 = $("<li>");
-                ingredient9.text(response.meals[0].strIngredient9);
-                ingredientListEl.append(ingredient9);
-
-                var ingredient10 = $("<li>");
-                ingredient10.text(response.meals[0].strIngredient10);
-                ingredientListEl.append(ingredient10);
-
+                for (var i = 1; i < 20; i++) {
+                    if (response.meals[0]["strIngredient" +i] === "") {
+                        console.log(i)
+                    } else {
+                        ingredient[i] = $("<li>");
+                        ingredient[i].text(response.meals[0]["strIngredient" +i]);
+                        ingredientListEl.append(ingredient[i]);
+                        }
+                    }
+                
                 $("#ingredientsList").append(ingredientListEl);
 
                 $("#instructions").empty();
