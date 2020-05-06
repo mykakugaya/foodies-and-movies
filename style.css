@@ -87,7 +87,7 @@ ol {
 }
 
 .drinkList {
-    padding: 0 auto;
+    align-items: center;
 }
 
 .drinkItem {

@@ -180,23 +180,45 @@ $(".drink-dropdown").on("click", function() {
         //Results shown here
         var results = response.drinks;
         $("#drinkResults").empty();
+        var ul = $("<ul>").addClass("drinkList list-group");
 
         for (i=0; i<results.length; i++) {
-            //area for food item
-            var newDiv = $("<div>").addClass("drinkItem");
+            //area for drink item - if clicked, popup recipe
+            var li = $("<li>").addClass("drinkItem list-group-item flex-fill");
             //append image
-            var drinkImg = $("<img>");
-            drinkImg.attr("src", results[i].strDrinkThumb);
-            drinkImg.attr("id", "listImage");
-            newDiv.append(drinkImg);
+            var wrapper = $("<div>").addClass("container imgWrap");
+            wrapper.html(`<img src=${results[i].strDrinkThumb} id="listImage"/><button class="btn saveBtnFood" id="btn" data-state="unsaved">Save</button>`);
+            li.append(wrapper);
             //append name - if clicked, triggers ajax call for recipe
-            var drinkName = $("<div>").addClass("drinkName");
+            var drinkName = $("<button>").addClass("drinkName btn btn-light");
             drinkName.text(results[i].strDrink);
-            drinkName.attr("id", results[i].idDrink);
-            newDiv.append(drinkName);
+            drinkName.attr("data-name", results[i].idDrink);
+            drinkName.attr("data-toggle", "modal");
+            drinkName.attr("data-target", "#staticBackdrop");
+            li.append(drinkName);
             
-            $("#drinkResults").append(newDiv);
+            ul.append(li);
         }
+
+        $("#drinkResults").append(ul);
+
+        //Click save button to save/unsave recipe
+        $(".saveBtnFood").on("click", function() {
+            var selected = $(this).attr("id");
+
+            if ($(this).attr("data-state") === "unsaved") {
+                $(this).text("Saved!");
+                $(this).attr("data-state", "saved");
+                $(this).addClass("clickedBtn");
+            }
+            else{
+                $(this).text("Save");
+                $(this).attr("data-state", "unsaved");
+                $(this).removeClass("clickedBtn");
+            }
+
+            //append to saved recipes and save to local storage
+        })
     })
 })
 
