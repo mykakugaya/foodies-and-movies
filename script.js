@@ -174,3 +174,18 @@ $(".drink-dropdown").on("click", function() {
         }
     })
 })
+
+// Clear Results Button
+function clearFood () {
+    $("#foodResults").empty();
+}
+
+function clearDrink () {
+    $("#drinkResults").empty();
+}
+
+$("#clear-food-btn").on("click", clearFood);
+
+$("#clear-drink-btn").on("click", clearDrink);
+
+
