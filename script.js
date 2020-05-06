@@ -1,12 +1,14 @@
+//Array of food searches
 var savedSearches = localStorage.getItem("savedSearches") ? JSON.parse(localStorage.getItem("savedSearches")) : [];
 
 //Show saved searches
-function showSavedSearches() {
+function showSavedFoodSearches() {
     for (i=0; i<savedSearches.length; i++) {
         var savedItem = $("<button>").text(savedSearches[i].name);
+        savedItem.addClass("savedRecipe btn btn primary rounded");
         savedItem.attr("data-name", savedSearches[i].id);
         savedItem.attr("id", savedSearches[i].name);
-        $("#savedResults").prepend(savedItem);
+        $("#savedFoodResults").prepend(savedItem);
     }
 }
 
@@ -71,8 +73,13 @@ $(".food-dropdown").on("click", function() {
                 $(this).addClass("clickedBtn");
 
                 //Add item to savedSearches and update local storage
-                savedSearches.push(selected);
-                localStorage.setItem("savedSearches", JSON.stringify(savedSearches));
+                if (savedSearches.includes(selected)) {
+                    break;
+                }
+                else{
+                    savedSearches.push(selected);
+                    localStorage.setItem("savedSearches", JSON.stringify(savedSearches));
+                }
             }
             //Unsaving a recipe
             else{
@@ -87,7 +94,7 @@ $(".food-dropdown").on("click", function() {
                     }
                 }
             }
-            showSavedSearches();
+            showSavedFoodSearches();
         })
 
         //Click name to see recipe
