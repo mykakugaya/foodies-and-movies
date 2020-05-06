@@ -79,12 +79,14 @@ $(".food-dropdown").on("click", function() {
                 var dishName = response.meals[0].strMeal;
                 $(".modal-title").text(dishName);
 
+                $("#dishImgDiv").empty();
                 var dishImg = $("<img>");
                 var imgURL = response.meals[0].strMealThumb;
                 dishImg.attr("src", imgURL);
                 dishImg.attr("width", "100px");
                 $("#dishImgDiv").append(dishImg);
 
+                $("#ingredientsList").empty();
                 var ingredientListEl = $("<ul>").addClass("listEl");
                 // ingredient list
                 var ingredient1 = $("<li>");
@@ -129,6 +131,7 @@ $(".food-dropdown").on("click", function() {
 
                 $("#ingredientsList").append(ingredientListEl);
 
+                $("#instructions").empty();
                 var dishInstructions = response.meals[0].strInstructions;
                 $("#instructions").text(dishInstructions);
 
