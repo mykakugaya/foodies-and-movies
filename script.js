@@ -1,3 +1,14 @@
+// window.onscroll = function() {
+//     var sticky = $("#navbar").offsetTop;
+//     function stickyNav() {
+//         if (window.pageYOffset >= sticky) {
+//             $("#navbar").addClass("sticky");
+//         } else {
+//             $("#navbar").removeClass("sticky");
+//         }
+//     }
+// }
+
 //Array of food searches
 var savedSearches = localStorage.getItem("savedSearches") ? JSON.parse(localStorage.getItem("savedSearches")) : [];
 
@@ -8,7 +19,7 @@ function showSavedFoodSearches() {
         savedItem.addClass("savedRecipe btn btn primary rounded");
         savedItem.attr("data-name", savedSearches[i].id);
         savedItem.attr("id", savedSearches[i].name);
-        $("#savedFoodResults").prepend(savedItem);
+        $("#savedFoodResults").append(savedItem);
     }
 }
 
@@ -261,4 +272,6 @@ function clearDrink () {
 
 $("#clear-food-btn").on("click", clearFood);
 
+
 $("#clear-drink-btn").on("click", clearDrink);
+
