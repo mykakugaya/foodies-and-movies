@@ -1,3 +1,4 @@
+// Below is the list of movie IDs from IMDB Top 250 movies. Data was pulled using Python
 let movieArray = [
     111161,
     68646,
@@ -249,11 +250,13 @@ let movieArray = [
     103639,
     94625,
     40725]
-    
+
+// Random Number Selector 0-249
 function randomNumber () {
     return Math.floor(Math.random() * 250);
 }
 
+// Digit Counter *(some of the IDs that were pulled from Python is missing zeros in the beginning of the ID, ID has to be 7 digits total)
 function countDigits(n) {
     var count = 0;
     if (n >= 1) ++count;
@@ -266,12 +269,16 @@ function countDigits(n) {
     return count;
 }
 
+// Random movie btn and the respective results that will be displayed
 $("#randomMovieBtn").on("click", function(event) {
     event.preventDefault();
     var random = movieArray[randomNumber()];
+        // Adding one zero if number is only 6 digits *ID has to be 7 digits and the zeros were lost during Python data scrape
         if (countDigits(random) === 6) {
             random = "0" + random;
         }
+
+        // Adding two zeros if number is only 5 digits *ID has to be 7 digits and the zeros were lost during Python data scrape
         else if (countDigits(random) === 5) {
             random = "00" + random;
         }
