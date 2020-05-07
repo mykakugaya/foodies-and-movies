@@ -11,8 +11,8 @@ body {
 }
 
 .hero-image {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("https://image.freepik.com/free-photo/popcorn-horizontal-banner-red-stripped-paper-cup-kernels-lying-blue-wooden-background_76290-132.jpg");
-    height: 20%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fhips.hearstapps.com%2Fhmg-prod.s3.amazonaws.com%2Fimages%2Fcorn-popcorn-on-a-blue-wooden-background-as-a-snack-royalty-free-image-864500364-1561390100.jpg");
+    height: 22%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -50,7 +50,7 @@ ol {
 }
 
 #main {
-    margin-top: 150px;
+    margin-top: 200px;
 }
 
 .cardMargin {
