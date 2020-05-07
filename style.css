@@ -7,11 +7,29 @@ body {
 .container {
     margin: 0 auto;
     padding: 0;
-    z-index: 1
+    z-index: 1;
 }
 
-#main {
-    margin-top: 150px;
+.hero-image {
+    /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("https://image.freepik.com/free-photo/popcorn-horizontal-banner-red-stripped-paper-cup-kernels-lying-blue-wooden-background_76290-132.jpg");
+  
+    /* Set a specific height */
+    height: 20%;
+  
+    /* Position and center the image to scale nicely on all screens */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 2;
+}
+  
+.hero-text {
+    text-align: center;
+    position: absolute;
+    top: 25%;
+    width: 100%;
+    color: white;
 }
 
 header {
@@ -23,18 +41,22 @@ header {
     top: 0;
     margin-bottom: 20px;
     display: block;
-    z-index: 2;
+    z-index: 3;
 }
 
 .headerText {
     color: white;
     text-align: center;
-    background-color: gray;
+    /* background-color: gray; */
         /* background-color: rgb(97, 182, 72); */
 }
 
 ol {
     justify-content: center;
+}
+
+#main {
+    margin-top: 150px;
 }
 
 .cardMargin {
