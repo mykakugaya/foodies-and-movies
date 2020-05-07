@@ -33,12 +33,6 @@ header {
         /* background-color: rgb(97, 182, 72); */
 }
 
-/* #navbar {
-    overflow: hidden;
-    position: fixed;
-    width: 100%;
-} */
-
 ol {
     justify-content: center;
 }
@@ -117,6 +111,11 @@ ol {
     padding: 0 auto;
     text-align: center;
 }
+
+.movieCard {
+    text-align: center;
+}
+
 .search-bg {
     /* background-color: rgb(97, 182, 72); */
 }

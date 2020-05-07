@@ -8,18 +8,19 @@
     <!--CSS stylesheet-->
     <link rel="stylesheet" href="style.css">
 
-    <title>Project 1</title>
+    <title>Foodies and Movies</title>
 </head>
 
 <body>
 
     <!-- Header -->
-    <header><h1 class="headerText">Header</h1>
+    <header><h1 class="headerText">Foodies and Movies</h1>
       <nav aria-label="breadcrumb" id="navbar">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="#foodResults">Food Recipes</a></li>
           <li class="breadcrumb-item"><a href="#drinkResults">Drink Recipes</a></li>
           <li class="breadcrumb-item"><a href="#savedFoodResults">Saved Recipes</a></li>
+          <li class="breadcrumb-item"><a href="#randomMovie">Movie Picker</a></li>
         </ol>
       </nav>
     </header>
@@ -128,8 +129,8 @@
         </div>
         <!--Random Movie-->
         <div class="row">
-          <div class="card col-md-12 cardMargin">
-              <div class="card-body">
+          <div class="card col-md-12 cardMargin" id="randomMovie">
+              <div class="card-body movieCard">
                 <h5 class="card-title">Random Movie Picker</h5>
                 <button type="button" class="btn btn-warning" id="randomMovieBtn">Pick a random movie for me!</button>
                 <div id="movieResults"></div>
