@@ -1,23 +1,11 @@
 //Array of food searches
 var savedSearches = localStorage.getItem("savedSearches") ? JSON.parse(localStorage.getItem("savedSearches")) : [];
 
-let x = [
-    {
-        id: 0,
-        name: "hello"
-    },
-    {
-        id: 1,
-        name: "world"
-    }
-]
-
 //Show saved searches
-// var x = [1,2,3,4]
-// var y = x.map(callback => callback + 5)
-// console.log(y);
 function showSavedFoodSearches() {
+    $("#savedFoodResults").empty();
     for (i=0; i<savedSearches.length; i++) {
+        savedSearches = JSON.parse(localStorage.getItem("savedSearches"));
         var savedItem = $("<button>").text(savedSearches[i].name);
         savedItem.addClass("savedRecipe btn btn primary rounded");
         savedItem.attr("data-name", savedSearches[i].id);
@@ -296,3 +284,4 @@ $("#clear-food-btn").on("click", clearFood);
 
 $("#clear-drink-btn").on("click", clearDrink);
 
+showSavedFoodSearches();
