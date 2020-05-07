@@ -85,7 +85,7 @@ function showSavedDrinkSearches() {
                 url: drinkURL,
                 method: "GET"
             }).then(function(response) {
-                console.log(queryURL);
+                console.log(drinkURL);
                 console.log(response);
                 
                 var drinkName = response.drinks[0].strDrink;
