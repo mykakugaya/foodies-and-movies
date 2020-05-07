@@ -1,17 +1,127 @@
 //Array of food searches
-var savedSearches = localStorage.getItem("savedSearches") ? JSON.parse(localStorage.getItem("savedSearches")) : [];
+var savedFoodSearches = localStorage.getItem("savedFoodSearches") ? JSON.parse(localStorage.getItem("savedFoodSearches")) : [];
 
-//Show saved searches
+//Array of drink searches
+var savedDrinkSearches = localStorage.getItem("savedDrinkSearches") ? JSON.parse(localStorage.getItem("savedDrinkSearches")) : [];
+
+//Show saved food searches
 function showSavedFoodSearches() {
     $("#savedFoodResults").empty();
-    for (i=0; i<savedSearches.length; i++) {
-        savedSearches = JSON.parse(localStorage.getItem("savedSearches"));
-        var savedItem = $("<button>").text(savedSearches[i].name);
+    for (i=0; i<savedFoodSearches.length; i++) {
+        savedFoodSearches = JSON.parse(localStorage.getItem("savedFoodSearches"));
+        var savedItem = $("<button>").text(savedFoodSearches[i].name);
         savedItem.addClass("savedRecipe btn btn primary rounded");
-        savedItem.attr("data-name", savedSearches[i].id);
-        savedItem.attr("id", savedSearches[i].name);
+        savedItem.attr("data-name", savedFoodSearches[i].id);
+        savedItem.attr("id", savedFoodSearches[i].name);
         savedItem.attr("data-state", "saved");
+        savedItem.attr("data-toggle", "modal");
+        savedItem.attr("data-target", "#staticBackdrop");
         $("#savedFoodResults").append(savedItem);
+
+        $(".savedRecipe").on("click", function() {
+            var id = $(this).attr("data-name");
+            var mealURL = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + id;
+            $.ajax({
+                url: mealURL,
+                method: "GET"
+            }).then(function(response) {
+                console.log(mealURL);
+                console.log(response);
+                
+                var dishName = response.meals[0].strMeal;
+                $(".modal-title").text(dishName);
+
+                $("#dishImgDiv").empty();
+                var dishImg = $("<img>");
+                var imgURL = response.meals[0].strMealThumb;
+                dishImg.attr("src", imgURL);
+                dishImg.attr("width", "100px");
+                $("#dishImgDiv").append(dishImg);
+
+                $("#ingredientsList").empty();
+                var ingredientListEl = $("<ul>").addClass("listEl");
+                // ingredient list
+
+                var ingredient = [];
+
+                for (var i = 1; i < 20; i++) {
+                    if (response.meals[0]["strIngredient" +i] === "") {
+                        console.log(i)
+                    } else {
+                        ingredient[i] = $("<li>");
+                        ingredient[i].text(response.meals[0]["strIngredient" +i]);
+                        ingredientListEl.append(ingredient[i]);
+                        }
+                    }
+                
+                $("#ingredientsList").append(ingredientListEl);
+
+                $("#instructions").empty();
+                var dishInstructions = response.meals[0].strInstructions;
+                $("#instructions").text(dishInstructions);
+
+            })
+        })
+    }
+}
+
+function showSavedDrinkSearches() {
+    $("#savedDrinkResults").empty();
+    for (i=0; i<savedDrinkSearches.length; i++) {
+        savedDrinkSearches = JSON.parse(localStorage.getItem("savedDrinkSearches"));
+        var savedItem = $("<button>").text(savedDrinkSearches[i].name);
+        savedItem.addClass("savedRecipe btn btn primary rounded");
+        savedItem.attr("data-name", savedDrinkSearches[i].id);
+        savedItem.attr("id", savedDrinkSearches[i].name);
+        savedItem.attr("data-state", "saved");
+        savedItem.attr("data-toggle", "modal");
+        savedItem.attr("data-target", "#staticBackdrop");
+        $("#savedDrinkResults").append(savedItem);
+
+        $(".savedRecipe").on("click", function() {
+            var id = $(this).attr("data-name");
+            var drinkURL = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + id;
+            $.ajax({
+                url: drinkURL,
+                method: "GET"
+            }).then(function(response) {
+                console.log(drinkURL);
+                console.log(response);
+                
+                var drinkName = response.drinks[0].strDrink;
+                $(".modal-title").text(drinkName);
+
+                $("#drinkImgDiv").empty();
+                var drinkImg = $("<img>");
+                var imgURL = response.drinks[0].strDrinkThumb;
+                drinkImg.attr("src", imgURL);
+                drinkImg.attr("width", "100px");
+                $("#drinkImgDiv").append(drinkImg);
+
+                $("#ingredientsList").empty();
+                var ingredientListEl = $("<ul>").addClass("listEl");
+                // ingredient list
+
+                var ingredient = [];
+
+                for (var i = 1; i < 20; i++) {
+                    if (response.drinks[0]["strIngredient" +i] === "") {
+                        console.log(i)
+                    } else {
+                        ingredient[i] = $("<li>");
+                        ingredient[i].text(response.drinks[0]["strIngredient" +i]);
+                        ingredientListEl.append(ingredient[i]);
+                        }
+                    }
+                
+                $("#ingredientsList").append(ingredientListEl);
+
+                $("#instructions").empty();
+                var drinkInstructions = response.drinks[0].strInstructions;
+                $("#instructions").text(drinkInstructions);
+
+            })
+        })
     }
 }
 
@@ -51,8 +161,8 @@ $(".food-dropdown").on("click", function() {
             var wrapper = $("<div>").addClass("container imgWrap");
             wrapper.html(`<img src=${results[i].strMealThumb} id="listImage"/><button class="btn saveBtnFood" id=${results[i].idMeal} data-name="${results[i].strMeal}" data-state="unsaved">Save</button>`);
             //if already saved before, data-state=saved
-            for (let j=0; j<savedSearches.length; j++) {
-                var prevState = savedSearches[j].state;
+            for (let j=0; j<savedFoodSearches.length; j++) {
+                var prevState = savedFoodSearches[j].state;
                 if (prevState==="saved") {
                     $(".saveBtnFood").attr("data-state", "saved");
                 }
@@ -84,14 +194,14 @@ $(".food-dropdown").on("click", function() {
                 
                 $(this).attr("data-state", "saved");
                 selected.state = "saved";
-                for (i=0; i<savedSearches.length; i++) {
-                    if (savedSearches[i].id===selected.id) {
-                        savedSearches.splice(i, 1);
+                for (i=0; i<savedFoodSearches.length; i++) {
+                    if (savedFoodSearches[i].id===selected.id) {
+                        savedFoodSearches.splice(i, 1);
                     }
                 }
-                savedSearches.push(selected);
+                savedFoodSearches.push(selected);
                            
-                localStorage.setItem("savedSearches", JSON.stringify(savedSearches));
+                localStorage.setItem("savedFoodSearches", JSON.stringify(savedFoodSearches));
             }
 
             //Unsaving a recipe
@@ -99,20 +209,20 @@ $(".food-dropdown").on("click", function() {
                 $(this).text("Save");
                 $(this).removeClass("clickedBtn");
                 
-                const index = savedSearches.findIndex(obj => obj.id === selected.id);
+                const index = savedFoodSearches.findIndex(obj => obj.id === selected.id);
                 
                 // make new object of updated object.
-                const removedItem = { ...savedSearches[index], state: "unsaved"};
+                const removedItem = { ...savedFoodSearches[index], state: "unsaved"};
                 
                 // make final new array of objects by combining updated object.
                 const newSavedArr = [
-                    ...savedSearches.slice(0, index),
-                    ...savedSearches.slice(index + 1),
+                    ...savedFoodSearches.slice(0, index),
+                    ...savedFoodSearches.slice(index + 1),
                 ];
                 
                 //Remove item from array and update local storage
                 $(this).attr("data-state", "unsaved");
-                localStorage.setItem("savedSearches", JSON.stringify(newSavedArr));
+                localStorage.setItem("savedFoodSearches", JSON.stringify(newSavedArr));
             }
             showSavedFoodSearches();
         })
@@ -125,7 +235,7 @@ $(".food-dropdown").on("click", function() {
                 url: mealURL,
                 method: "GET"
             }).then(function(response) {
-                console.log(queryURL);
+                console.log(mealURL);
                 console.log(response);
                 
                 var dishName = response.meals[0].strMeal;
@@ -182,12 +292,12 @@ $(".drink-dropdown").on("click", function() {
         $("#drinkResults").empty();
         var ul = $("<ul>").addClass("drinkList list-group");
 
-        for (i=0; i<results.length; i++) {
+        for (let i=0; i<results.length; i++) {
             //area for drink item - if clicked, popup recipe
             var li = $("<li>").addClass("drinkItem list-group-item flex-fill");
             //append image: id=id#, data-name=meal name
             var wrapper = $("<div>").addClass("container imgWrap");
-            wrapper.html(`<img src=${results[i].strDrinkThumb} id="listImage"/><button class="btn saveBtnFood" id=${results[i].idDrink} data-name="${results[i].strDrink}" data-state="unsaved">Save</button>`);
+            wrapper.html(`<img src=${results[i].strDrinkThumb} id="listImage"/><button class="btn saveBtnDrink" id=${results[i].idDrink} data-name="${results[i].strDrink}" data-state="unsaved">Save</button>`);
             li.append(wrapper);
             //append name
             var drinkName = $("<button>").addClass("drinkName btn btn-light");
@@ -203,21 +313,49 @@ $(".drink-dropdown").on("click", function() {
         $("#drinkResults").append(ul);
 
         //Click save button to save/unsave recipe
-        $(".saveBtnFood").on("click", function() {
-            var selected = $(this).attr("id");
-
+        $(".saveBtnDrink").on("click", function() {
+            //Object with id# and drink name
+            var selected = {id: $(this).attr("id"), name: $(this).attr("data-name"), state: $(this).attr("data-state")};
+            
+            //saving a recipe
             if ($(this).attr("data-state") === "unsaved") {
                 $(this).text("Saved!");
-                $(this).attr("data-state", "saved");
                 $(this).addClass("clickedBtn");
-            }
-            else{
-                $(this).text("Save");
-                $(this).attr("data-state", "unsaved");
-                $(this).removeClass("clickedBtn");
+                                            
+                
+                $(this).attr("data-state", "saved");
+                selected.state = "saved";
+                for (i=0; i<savedDrinkSearches.length; i++) {
+                    if (savedDrinkSearches[i].id===selected.id) {
+                        savedDrinkSearches.splice(i, 1);
+                    }
+                }
+                savedDrinkSearches.push(selected);
+                           
+                localStorage.setItem("savedDrinkSearches", JSON.stringify(savedDrinkSearches));
             }
 
-            //append to saved recipes and save to local storage
+            //Unsaving a recipe
+            else{
+                $(this).text("Save");
+                $(this).removeClass("clickedBtn");
+                
+                const index = savedDrinkSearches.findIndex(obj => obj.id === selected.id);
+                
+                // make new object of updated object.
+                const removedItem = { ...savedDrinkSearches[index], state: "unsaved"};
+                
+                // make final new array of objects by combining updated object.
+                const newSavedArr = [
+                    ...savedDrinkSearches.slice(0, index),
+                    ...savedDrinkSearches.slice(index + 1),
+                ];
+                
+                //Remove item from array and update local storage
+                $(this).attr("data-state", "unsaved");
+                localStorage.setItem("savedDrinkSearches", JSON.stringify(newSavedArr));
+            }
+            showSavedDrinkSearches();
         })
 
 
@@ -235,12 +373,12 @@ $(".drink-dropdown").on("click", function() {
             var drinkName = response.drinks[0].strDrink;
             $(".modal-title").text(drinkName);
 
-            $("#dishImgDiv").empty();
+            $("#drinkImgDiv").empty();
             var drinkImg = $("<img>");
             var imgURL = response.drinks[0].strDrinkThumb;
             drinkImg.attr("src", imgURL);
             drinkImg.attr("width", "100px");
-            $("#dishImgDiv").append(drinkImg);
+            $("#drinkImgDiv").append(drinkImg);
 
             $("#ingredientsList").empty();
             var ingredientListEl = $("<ul>").addClass("listEl");
@@ -285,3 +423,5 @@ $("#clear-food-btn").on("click", clearFood);
 $("#clear-drink-btn").on("click", clearDrink);
 
 showSavedFoodSearches();
+
+showSavedDrinkSearches();

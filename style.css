@@ -101,6 +101,19 @@ ol {
     background-color: rgb(192, 86, 104);
 }
 
+.saveBtnDrink {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: white;
+    background-color: rgb(228, 127, 144);
+}
+
+.saveBtnDrink:hover {
+    color: white;
+    background-color: rgb(192, 86, 104);
+}
+
 .clickedBtn {
     color: white;
     background-color: rgb(162, 76, 212);
