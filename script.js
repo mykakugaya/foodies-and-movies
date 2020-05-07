@@ -182,12 +182,12 @@ $(".drink-dropdown").on("click", function() {
         $("#drinkResults").empty();
         var ul = $("<ul>").addClass("drinkList list-group");
 
-        for (i=0; i<results.length; i++) {
+        for (let i=0; i<results.length; i++) {
             //area for drink item - if clicked, popup recipe
             var li = $("<li>").addClass("drinkItem list-group-item flex-fill");
             //append image: id=id#, data-name=meal name
             var wrapper = $("<div>").addClass("container imgWrap");
-            wrapper.html(`<img src=${results[i].strDrinkThumb} id="listImage"/><button class="btn saveBtnFood" id=${results[i].idDrink} data-name="${results[i].strDrink}" data-state="unsaved">Save</button>`);
+            wrapper.html(`<img src=${results[i].strDrinkThumb} id="listImage"/><button class="btn saveBtnDrink" id=${results[i].idDrink} data-name="${results[i].strDrink}" data-state="unsaved">Save</button>`);
             li.append(wrapper);
             //append name
             var drinkName = $("<button>").addClass("drinkName btn btn-light");
@@ -203,21 +203,49 @@ $(".drink-dropdown").on("click", function() {
         $("#drinkResults").append(ul);
 
         //Click save button to save/unsave recipe
-        $(".saveBtnFood").on("click", function() {
-            var selected = $(this).attr("id");
-
+        $(".saveBtnDrink").on("click", function() {
+            //Object with id# and drink name
+            var selected = {id: $(this).attr("id"), name: $(this).attr("data-name"), state: $(this).attr("data-state")};
+            
+            //saving a recipe
             if ($(this).attr("data-state") === "unsaved") {
                 $(this).text("Saved!");
-                $(this).attr("data-state", "saved");
                 $(this).addClass("clickedBtn");
-            }
-            else{
-                $(this).text("Save");
-                $(this).attr("data-state", "unsaved");
-                $(this).removeClass("clickedBtn");
+                                            
+                
+                $(this).attr("data-state", "saved");
+                selected.state = "saved";
+                for (i=0; i<savedSearches.length; i++) {
+                    if (savedSearches[i].id===selected.id) {
+                        savedSearches.splice(i, 1);
+                    }
+                }
+                savedSearches.push(selected);
+                           
+                localStorage.setItem("savedSearches", JSON.stringify(savedSearches));
             }
 
-            //append to saved recipes and save to local storage
+            //Unsaving a recipe
+            else{
+                $(this).text("Save");
+                $(this).removeClass("clickedBtn");
+                
+                const index = savedSearches.findIndex(obj => obj.id === selected.id);
+                
+                // make new object of updated object.
+                const removedItem = { ...savedSearches[index], state: "unsaved"};
+                
+                // make final new array of objects by combining updated object.
+                const newSavedArr = [
+                    ...savedSearches.slice(0, index),
+                    ...savedSearches.slice(index + 1),
+                ];
+                
+                //Remove item from array and update local storage
+                $(this).attr("data-state", "unsaved");
+                localStorage.setItem("savedSearches", JSON.stringify(newSavedArr));
+            }
+            showSavedFoodSearches();
         })
 
 
