@@ -11,7 +11,54 @@ function showSavedFoodSearches() {
         savedItem.attr("data-name", savedSearches[i].id);
         savedItem.attr("id", savedSearches[i].name);
         savedItem.attr("data-state", "saved");
+        savedItem.attr("data-toggle", "modal");
+        savedItem.attr("data-target", "#staticBackdrop");
         $("#savedFoodResults").append(savedItem);
+
+        $(".savedRecipe").on("click", function() {
+            var id = $(this).attr("data-name");
+            var mealURL = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + id;
+            $.ajax({
+                url: mealURL,
+                method: "GET"
+            }).then(function(response) {
+                console.log(mealURL);
+                console.log(response);
+                
+                var dishName = response.meals[0].strMeal;
+                $(".modal-title").text(dishName);
+
+                $("#dishImgDiv").empty();
+                var dishImg = $("<img>");
+                var imgURL = response.meals[0].strMealThumb;
+                dishImg.attr("src", imgURL);
+                dishImg.attr("width", "100px");
+                $("#dishImgDiv").append(dishImg);
+
+                $("#ingredientsList").empty();
+                var ingredientListEl = $("<ul>").addClass("listEl");
+                // ingredient list
+
+                var ingredient = [];
+
+                for (var i = 1; i < 20; i++) {
+                    if (response.meals[0]["strIngredient" +i] === "") {
+                        console.log(i)
+                    } else {
+                        ingredient[i] = $("<li>");
+                        ingredient[i].text(response.meals[0]["strIngredient" +i]);
+                        ingredientListEl.append(ingredient[i]);
+                        }
+                    }
+                
+                $("#ingredientsList").append(ingredientListEl);
+
+                $("#instructions").empty();
+                var dishInstructions = response.meals[0].strInstructions;
+                $("#instructions").text(dishInstructions);
+
+            })
+        })
     }
 }
 
@@ -125,7 +172,7 @@ $(".food-dropdown").on("click", function() {
                 url: mealURL,
                 method: "GET"
             }).then(function(response) {
-                console.log(queryURL);
+                console.log(mealURL);
                 console.log(response);
                 
                 var dishName = response.meals[0].strMeal;
