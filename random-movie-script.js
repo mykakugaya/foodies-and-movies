@@ -290,7 +290,7 @@ $("#randomMovieBtn").on("click", function(event) {
                 movieDiv.append(posterImage);
 
                 var titleResult = response.Title;
-                var pTitle = $("<p>").text("Title: " + titleResult);
+                var pTitle = $("<h6>").text("Title: " + titleResult);
                 movieDiv.append(pTitle);
 
                 var yearResult = response.Year;
