@@ -304,6 +304,10 @@ $("#randomMovieBtn").on("click", function(event) {
                 var pYear = $("<p>").text("Release Year: " + yearResult);
                 movieDiv.append(pYear);
 
+                var ratedResult = response.Rated;
+                var pRated = $("<p>").text("Rated: " + ratedResult);
+                movieDiv.append(pRated);
+
                 var ratingResult = response.imdbRating;
                 var pRating = $("<p>").text("IMDB Rating: " + ratingResult);
                 movieDiv.append(pRating);
