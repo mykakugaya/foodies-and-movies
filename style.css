@@ -11,13 +11,8 @@ body {
 }
 
 .hero-image {
-    /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("https://image.freepik.com/free-photo/popcorn-horizontal-banner-red-stripped-paper-cup-kernels-lying-blue-wooden-background_76290-132.jpg");
-  
-    /* Set a specific height */
     height: 20%;
-  
-    /* Position and center the image to scale nicely on all screens */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -34,7 +29,6 @@ body {
 
 header {
     width: 100%;
-    background-color:gray;
     padding-top: 10px;
     overflow: hidden;
     position: fixed;
