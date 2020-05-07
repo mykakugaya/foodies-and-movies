@@ -70,7 +70,7 @@ function showSavedDrinkSearches() {
     for (i=0; i<savedDrinkSearches.length; i++) {
         savedDrinkSearches = JSON.parse(localStorage.getItem("savedDrinkSearches"));
         var savedItem = $("<button>").text(savedDrinkSearches[i].name);
-        savedItem.addClass("savedRecipe btn btn primary rounded");
+        savedItem.addClass("savedDrink btn btn primary rounded");
         savedItem.attr("data-name", savedDrinkSearches[i].id);
         savedItem.attr("id", savedDrinkSearches[i].name);
         savedItem.attr("data-state", "saved");
@@ -78,34 +78,34 @@ function showSavedDrinkSearches() {
         savedItem.attr("data-target", "#staticBackdrop");
         $("#savedDrinkResults").append(savedItem);
 
-        $(".savedRecipe").on("click", function() {
+        $(".savedDrink").on("click", function() {
             var id = $(this).attr("data-name");
             var drinkURL = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + id;
             $.ajax({
                 url: drinkURL,
                 method: "GET"
             }).then(function(response) {
-                console.log(drinkURL);
+                console.log(queryURL);
                 console.log(response);
                 
                 var drinkName = response.drinks[0].strDrink;
                 $(".modal-title").text(drinkName);
-
-                $("#drinkImgDiv").empty();
+    
+                $("#dishImgDiv").empty();
                 var drinkImg = $("<img>");
                 var imgURL = response.drinks[0].strDrinkThumb;
                 drinkImg.attr("src", imgURL);
                 drinkImg.attr("width", "100px");
-                $("#drinkImgDiv").append(drinkImg);
-
+                $("#dishImgDiv").append(drinkImg);
+    
                 $("#ingredientsList").empty();
                 var ingredientListEl = $("<ul>").addClass("listEl");
                 // ingredient list
-
+    
                 var ingredient = [];
-
-                for (var i = 1; i < 20; i++) {
-                    if (response.drinks[0]["strIngredient" +i] === "") {
+    
+                for (var i = 1; i < 15; i++) {
+                    if (response.drinks[0]["strIngredient" +i] === null) {
                         console.log(i)
                     } else {
                         ingredient[i] = $("<li>");
@@ -115,7 +115,7 @@ function showSavedDrinkSearches() {
                     }
                 
                 $("#ingredientsList").append(ingredientListEl);
-
+    
                 $("#instructions").empty();
                 var drinkInstructions = response.drinks[0].strInstructions;
                 $("#instructions").text(drinkInstructions);
@@ -373,12 +373,12 @@ $(".drink-dropdown").on("click", function() {
             var drinkName = response.drinks[0].strDrink;
             $(".modal-title").text(drinkName);
 
-            $("#drinkImgDiv").empty();
+            $("#dishImgDiv").empty();
             var drinkImg = $("<img>");
             var imgURL = response.drinks[0].strDrinkThumb;
             drinkImg.attr("src", imgURL);
             drinkImg.attr("width", "100px");
-            $("#drinkImgDiv").append(drinkImg);
+            $("#dishImgDiv").append(drinkImg);
 
             $("#ingredientsList").empty();
             var ingredientListEl = $("<ul>").addClass("listEl");
