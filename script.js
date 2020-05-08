@@ -422,6 +422,15 @@ $("#clear-food-btn").on("click", clearFood);
 
 $("#clear-drink-btn").on("click", clearDrink);
 
-showSavedFoodSearches();
+$("#clearBtnSavedFood").on("click", function() {
+    localStorage.setItem("savedFoodSearches", "[]");
+    showSavedFoodSearches();
+})
 
+$("#clearBtnSavedDrink").on("click", function() {
+    localStorage.setItem("savedDrinkSearches", "[]");
+    showSavedDrinkSearches();
+})
+
+showSavedFoodSearches();
 showSavedDrinkSearches();
