@@ -61,7 +61,7 @@ ol {
 }
 
 .sidebar {
-    background-color: rgb(179, 213, 221);
+    background-color: rgb(179, 213, 221, 0.5);
 }
 
 .btnBG {
@@ -129,14 +129,24 @@ ol {
 
 .savedRecipe {
     color: white;
-    background-color: rgb(34, 126, 129);
+    background-color:rgb(34, 126, 129);
     margin: 10px;
+}
+
+.savedRecipe:hover {
+    color: white;
+    background-color: rgb(42, 154, 158);
 }
 
 .savedDrink {
     color: white;
     background-color: rgb(34, 126, 129);
     margin: 10px;
+}
+
+.savedDrink:hover {
+    color: white;
+    background-color: rgb(42, 154, 158);
 }
 
 .drinkList {
