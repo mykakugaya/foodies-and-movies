@@ -1,9 +1,11 @@
 # project-1
 
+https://mykakugaya.github.io/foodies-and-movies/
+
 Project Title: 
 - Foodies & Movies
 
-Project Description: Recipe generator and random movie picker
+Project Description: Recipe generator and random movie generator
 
 User Story: As a typical person stuck in quarantine (who can’t afford to continuously order delivery), I want to be able to search for various food and drink recipes by category to cook at home. In addition, I want to choose a random movie to watch to complement my meal.
 
@@ -12,7 +14,7 @@ APIs to be Used:
 - The Cocktail DB
 - OMDB (Open Movie Database)
 
-Application Features
+Application Features:
 - Food recipe generator (by category)
 - Drink recipe generator (by category)
 - Saved food/drink recipes
