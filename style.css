@@ -61,7 +61,7 @@ ol {
 }
 
 .sidebar {
-    background-color: lightgray;
+    background-color: rgb(179, 213, 221);
 }
 
 .btnBG {
@@ -96,12 +96,12 @@ ol {
     top: 0;
     right: 0;
     color: white;
-    background-color: rgb(228, 127, 144);
+    background-color: rgb(243, 140, 14);
 }
 
 .saveBtnFood:hover {
     color: white;
-    background-color: rgb(192, 86, 104);
+    background-color: rgb(198, 121, 34);
 }
 
 .saveBtnDrink {
@@ -109,33 +109,33 @@ ol {
     top: 0;
     right: 0;
     color: white;
-    background-color: rgb(228, 127, 144);
+    background-color: rgb(243, 140, 14);
 }
 
 .saveBtnDrink:hover {
     color: white;
-    background-color: rgb(192, 86, 104);
+    background-color:	rgb(198, 121, 34);
 }
 
 .clickedBtn {
     color: white;
-    background-color: rgb(162, 76, 212);
+    background-color: 	rgb(90, 183, 197);
 }
 
 .clickedBtn:hover {
     color: white;
-    background-color: rgb(86, 5, 133);
+    background-color: rgb(16, 167, 182);
 }
 
 .savedRecipe {
     color: white;
-    background-color: rgb(0, 91, 128);
+    background-color: rgb(34, 126, 129);
     margin: 10px;
 }
 
 .savedDrink {
     color: white;
-    background-color: rgb(0, 91, 128);
+    background-color: rgb(34, 126, 129);
     margin: 10px;
 }
 
