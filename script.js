@@ -125,19 +125,6 @@ function showSavedDrinkSearches() {
     }
 }
 
-//AJAX call by name
-// $(".foodBtn").on("click", function() {
-//     var name = $(".foodInput").val();
-//     var queryURL = "https://www.themealdb.com/api/json/v1/1/search.php?s=" + name;
-//     $.ajax({
-//         url: queryURL,
-//         method: "GET"
-//     }).then(function(response) {
-//         console.log(queryURL);
-//         console.log(response); 
-//     })
-// })
-
 //AJAX call by category (Food)
 $(".food-dropdown").on("click", function() {
     var category = $(this).attr("data-name");
