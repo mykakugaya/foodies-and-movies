@@ -282,7 +282,7 @@ $("#randomMovieBtn").on("click", function(event) {
         else if (countDigits(random) === 5) {
             random = "00" + random;
         }
-            var movieQueryURL = "http://www.omdbapi.com/" + "?i=tt" + random + "&apikey=ff3a28cb";
+            var movieQueryURL = "https://www.omdbapi.com/" + "?i=tt" + random + "&apikey=ff3a28cb";
             $.ajax({
                 url: movieQueryURL,
                 method: "GET"
