@@ -41,8 +41,11 @@ header {
 .headerText {
     color: white;
     text-align: center;
-    /* background-color: gray; */
-        /* background-color: rgb(97, 182, 72); */
+    font-family: 'Pacifico', cursive;
+}
+
+.sectionTitle {
+    font-family: 'Pacifico', cursive;
 }
 
 ol {
