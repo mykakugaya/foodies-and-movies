@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Bootstrap CSS-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <!--CSS stylesheet-->
     <link rel="stylesheet" href="style.css">
 
@@ -15,7 +17,7 @@
     <!-- Header -->
     <header class="hero-image">
       <div class="hero-text">
-        <h1 class="headerText">Foodies and Movies</h1>
+        <h1 class="headerText">Foodies & Movies</h1>
         <nav aria-label="breadcrumb" id="navbar">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#foodResults">Food Recipes</a></li>
@@ -33,7 +35,7 @@
             <!-- Food sidebar -->
             <div class="card col-md-3 cardMargin sidebar search-bg">
                 <div class="card-body">
-                    <h5 class="card-title">Food Search</h5>
+                    <h5 class="card-title sectionTitle">Food Search</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Search for food recipes</h6>
                     <!-- Food Input -->
                     <!-- <div class="input-group mb-3">
@@ -71,8 +73,9 @@
 
             <!-- Food results -->
             <div class="card col-md-9 cardMargin">
-                <div class="card-body" id="foodResults">
-                    <h5 class="card-title">Food Recipes</h5>
+                <div class="card-body">
+                    <h5 class="card-title sectionTitle">Food Recipes</h5>
+                    <div id="foodResults"></div>
                 </div>
               </div>
         </div>
@@ -81,7 +84,7 @@
             <!-- Drink sidebar -->
             <div class="card col-md-3 cardMargin sidebar search-bg">
                 <div class="card-body">
-                  <h5 class="card-title">Drink Search</h5>
+                  <h5 class="card-title sectionTitle">Drink Search</h5>
                   <h6 class="card-subtitle mb-2 text-muted">Search for drink recipes</h6>
                   <!-- Drink Input -->
                   <!--<div class="input-group mb-3">
@@ -108,8 +111,9 @@
 
             <!-- Drink results -->
             <div class="card col-md-9 cardMargin">
-                <div class="card-body" id="drinkResults">
-                    <h5 class="card-title">Drink Recipes</h5>
+                <div class="card-body">
+                    <h5 class="card-title sectionTitle">Drink Recipes</h5>
+                    <div id="drinkResults"></div>
                 </div>
             </div>
         </div>
@@ -118,7 +122,7 @@
         <div class="row">
             <div class="card col-md-12 cardMargin">
                 <div class="card-body centerCard">
-                  <h5 class="card-title">Saved Food Recipes</h5>
+                  <h5 class="card-title sectionTitle">Saved Food Recipes</h5>
                   <div id="savedFoodResults"></div>
                   <button type="button" class="btn btn-outline-secondary" id="clearBtnSavedFood">Clear My Food Recipes</button>
                 </div>
@@ -128,7 +132,7 @@
         <div class="row">
           <div class="card col-md-12 cardMargin">
               <div class="card-body centerCard">
-                <h5 class="card-title">Saved Drink Recipes</h5>
+                <h5 class="card-title sectionTitle">Saved Drink Recipes</h5>
                 <div id="savedDrinkResults"></div>
                 <button type="button" class="btn btn-outline-secondary" id="clearBtnSavedDrink">Clear My Drink Recipes</button>
               </div>
@@ -138,7 +142,7 @@
         <div class="row">
           <div class="card col-md-12 cardMargin" id="randomMovie">
               <div class="card-body centerCard">
-                <h5 class="card-title">Random Movie Picker</h5>
+                <h5 class="card-title sectionTitle">Random Movie Picker</h5>
                 <button type="button" class="btn btn-warning" id="randomMovieBtn">Pick a random movie for me!</button>
                 <div id="movieResults"></div>
               </div>
