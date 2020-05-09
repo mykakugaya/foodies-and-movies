@@ -409,6 +409,7 @@ $("#clear-food-btn").on("click", clearFood);
 
 $("#clear-drink-btn").on("click", clearDrink);
 
+//Clear saved recipes button
 $("#clearBtnSavedFood").on("click", function() {
     localStorage.setItem("savedFoodSearches", "[]");
     showSavedFoodSearches();
@@ -419,5 +420,6 @@ $("#clearBtnSavedDrink").on("click", function() {
     showSavedDrinkSearches();
 })
 
+//Show saved recipes when page refreshed
 showSavedFoodSearches();
 showSavedDrinkSearches();
