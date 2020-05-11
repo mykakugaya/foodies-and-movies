@@ -1,7 +1,6 @@
 body {
     margin: 0;
     padding: 0;
-        /* background-color: rgb(1, 41, 22); */
 }
 
 .container {
@@ -164,41 +163,10 @@ ol {
     text-align: center;
 }
 
-.search-bg {
-    /* background-color: rgb(97, 182, 72); */
-}
-
-.top-links {
-    /* color: rgb(243, 211, 107); */
-}
-
-.card-title {
-    /* color: rgb(243, 211, 107); */
-}
-
 .clear-section {
     margin-top: 10px;
-}
-
-* {
-        /* yellow */
-    /* background-color: rgb(243, 211, 107); */
-
-        /* dark blue */
-    /* background-color: rgb(2, 21, 58); */ 
-
-        /* dark green */
-    /* background-color: rgb(1, 41, 22); */
-
-        /* light green */
-    /* background-color: rgb(97, 182, 72); */
-
-        /* red */
-    /* background-color: rgb(230, 25, 25); */
 }
 
 #randomMovieBtn {
     margin-bottom: 10px;
 }
-
-

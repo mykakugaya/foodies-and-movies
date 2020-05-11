@@ -1,9 +1,7 @@
-# project-1
-
 https://mykakugaya.github.io/foodies-and-movies/
 
 Project Title: 
-- Foodies & Movies
+Foodies & Movies
 
 Project Description: Recipe generator and random movie generator
 
@@ -24,4 +22,3 @@ Future Development:
 - Pagination of recipe results for easier navigation
 - Search recipe by ingredient or dietary preferences
 - Incorporate “unsave” button in Saved Recipes section
-
